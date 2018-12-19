@@ -1,27 +1,60 @@
-<!-- TODO Заменить папку views на свою -->
-<!-- TODO Пoдключить через папку bootstrap + заменить index.php на перенаправление на бек часть в папку bootstrap -->
-<!-- TODO Разбить обычный индексный файл index.html на части и подключать их файлово(NAV, header, footer...) -->
-<!-- TODO Сделать свою маршрутизацию + Создать все страницы, а лучше их генерацию из частей разбитых в предыдущем пункте. -->
-<!-- TODO Добавить на стринцу "Контакты" форму связи.  на примерах это страница Guestbook(guest)  -->
-<!-- TODO Создать в папке Views страницу 404 она понадобится часто....  -->
-<!-- TODO СОздать свою папку Shared в ней есть файлы-части обычной страницы -->
+<?php
 
-<?php 
-require_once realpath('../config/app.php');
-require_once ROOT.'/bootstrap/bootstrap'.EXT;
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylor@laravel.com>
+ */
 
-// $connect = mysqli_connect('127.0.0.1', 'root', '', 'alcoshop');
-// if (mysqli_connect_errno()){
-//     printf("Подключения нет");
-// }
+define('LARAVEL_START', microtime(true));
 
-// if(!$connect){
-//     echo "Невозможно установить соединение";
-// }
-// else {
-// echo "Соединение с MySQL установлено!" . PHP_EOL;
-// }
-// mysqli_close($connect);
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
+|
+*/
 
+require __DIR__.'/../vendor/autoload.php';
 
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
 
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
+
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);

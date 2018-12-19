@@ -1,0 +1,30 @@
+body {
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+  
+}
+.navbar-dark .bg-dark{
+  background-color: #c7c6c254;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3em;
+  padding: 0 3%;
+}
+
+.navbar-nav{
+    padding-left: 1%;
+}
+
+.form-inline .form-control{
+  width: 21rem;
+}
+
+.navbar-expand-xl .navbar-nav{
+  flex-basis: 60%;
+}

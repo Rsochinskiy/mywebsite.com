@@ -1,0 +1,21 @@
+body{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#topic{
+    background-image: url("../img/bosch.jpg");
+    background-size: cover;
+    background-position: center right;
+}
+
+.ml-auto, .mx-auto{
+    top: -6rem;
+    left: -15rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 5px #D7b46a; 
+    /* padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px; */
+    border: 1px solid #D7b46a; 
+  }
