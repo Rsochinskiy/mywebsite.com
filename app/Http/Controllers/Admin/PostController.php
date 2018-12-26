@@ -15,10 +15,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $posts = Post::latest()->paginate(5);
-        return view('admin.posts.index',compact('posts'))   ->with('i', (request()->input('page', 1)-1)*5);
-    }
+{
+  $posts = Post::latest()->paginate(5);
+  return view('admin.posts.index',compact('posts'))->with('i', (request()->input('page', 1)-1)*5);
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +29,7 @@ class PostController extends Controller
     public function create()
     {
         // $categories = Category::all();
-        return view('admin.posts.create')->withCategories(Category::all());
+        return view('admin.posts.create')->withCategories(Category::all())->withTags(\App\Tag::all());
     }
 
     /**

@@ -17,10 +17,13 @@ class TagController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $tags = Tag::latest()->paginate(5);
-        return view('admin.tags.index',compact('tags'))   ->with('i', (request()->input('page', 1)-1)*5);
-    }
+   {
+       $tags = Tag::paginate(10);
+
+       return view('admin.tags.index')
+           ->with('tags', $tags);
+   }
+
 
     /**
      * Show the form for creating a new resource.
